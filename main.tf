@@ -9,11 +9,11 @@ terraform {
 }
 
 module "my_web_instance" {
-    source = "./modules/terraform-ec2-instance"
+    source = "./modules/terraform-ec2-instance/"
     my_ami = var.first_ami
-    instance_type = var.first_instance_type
-    environment = var.first_environment
-    project_name = var.my_first_project
+    my_instance_type = var.first_instance_type
+    my_environment = var.first_environment
+    my_first_project = var.my_first_project 
   
 }
 
@@ -30,8 +30,9 @@ variable "first_instance_type" {
  }
 
 variable "first_environment" {
-    type = string
-    default = "dev"
+    description = "List of allowed environments"
+    type = list(string)
+    default = ["dev", "test", "prod"]
    
  }
 variable "my_first_project" {

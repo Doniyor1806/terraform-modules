@@ -1,16 +1,19 @@
-resource "aws_ec2_instance" "my_instance" {
+resource "aws_instance" "my_instance" {
 ami = var.my_ami
 instance_type = var.my_instance_type
-environment = var.my_environment
-project_name = var.my_first_project
+
 
 tags = {
-  name = "web-instance" 
+  Name        = "web-instance"
+  Environment = var.my_environment
+  Project     = var.my_first_project
+
 }
 }
 
 
 variable "my_ami" {
+  
 }
 variable "my_instance_type" {
 }
